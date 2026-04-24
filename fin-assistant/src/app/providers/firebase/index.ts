@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -11,18 +11,8 @@ const firebaseConfig = {
     appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+export const firebaseApp = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
-signInAnonymously(auth);
+export const auth = getAuth(firebaseApp);
 
-export const db = getFirestore(app);
-export const firebaseApp = app;
-export let userId: string | null = null;
-
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        userId = user.uid;
-        console.log("User ID:", userId);
-    }
-});
+export const db = getFirestore(firebaseApp);
