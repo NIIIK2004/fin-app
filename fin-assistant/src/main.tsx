@@ -9,6 +9,7 @@ import { LoginPage } from "./pages/login";
 import { NotFoundPage } from "./pages/not-found";
 import { routes } from "./shared/config/routes";
 import { getCurrentUser } from "./shared/lib/auth";
+import { CreateGoalPage } from "./pages/create-goal";
 
 const isAuth = !!getCurrentUser();
 
@@ -20,9 +21,9 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <ProtectedRoute isAuth={isAuth}>
-        <MainLayout />
-      </ProtectedRoute>
+      // <ProtectedRoute isAuth={isAuth}>
+      <MainLayout />
+      // </ProtectedRoute>
     ),
 
     children: [
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: routes.history.slice(1),
         element: <HistoryPage />,
+      },
+      {
+        path: routes.createGoal.slice(1),
+        element: <CreateGoalPage />,
       },
     ],
   },
