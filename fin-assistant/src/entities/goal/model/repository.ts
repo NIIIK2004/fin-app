@@ -1,6 +1,7 @@
-import { addDoc, collection, doc, getDocs, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { db } from "../../../app/providers/firebase";
 import type { Goal } from "./types";
+import { auth } from "../../../app/providers/auth";
 
 const goalsCollection = collection(db, "goals");
 
@@ -11,7 +12,16 @@ export const createGoal = async (
     return docRef.id
 }
 export const getGoals = async (): Promise<Goal[]> => {
-    const snapshot = await getDocs(goalsCollection);
+    const uid = auth.currentUser?.uid;
+
+    if (!uid) throw new Error("No user");
+
+    const q = query(
+        goalsCollection,
+        where("userId", "==", uid)
+    );
+
+    const snapshot = await getDocs(q);
 
     return snapshot.docs.map((docItem) => ({
         id: docItem.id,

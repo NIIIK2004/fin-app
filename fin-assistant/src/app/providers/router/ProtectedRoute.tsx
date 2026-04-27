@@ -1,21 +1,18 @@
-// import { Navigate } from "react-router-dom";
-
-import type React from "react";
 import { Navigate } from "react-router-dom";
-
-type Props = {
-    isAuth: boolean;
-    children: React.ReactNode;
-};
+import { useAuth } from "../../../shared/lib/hooks/useAuth";
 
 export const ProtectedRoute = ({
-    isAuth,
     children,
-}: Props) => {
-    if (!isAuth) {
-        return <Navigate to="/login" replace />;
+}: {
+    children: React.ReactNode;
+}) => {
+    const { user, loading } = useAuth();
+
+    if (loading) return <div>Loading...</div>;
+
+    if (!user) {
+        return <Navigate to="/auth" replace />;
     }
 
     return children;
 };
-

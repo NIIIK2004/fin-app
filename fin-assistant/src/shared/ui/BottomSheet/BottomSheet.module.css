@@ -1,0 +1,42 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    backdrop-filter: blur(1.5px);
+    background: rgba(0, 0, 0, 0.45);
+
+}
+
+.sheet {
+    min-height: 400px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    /* width: calc(100% - 32px); */
+    z-index: 20;
+    border-radius: 45px 45px 0 0;
+    background: var(--white-bg);
+}
+
+.handle {
+    cursor: grab;
+    width: 30px;
+    height: 4px;
+    background: var(--gray-line);
+    border-radius: 999px;
+    margin: 0 auto 12px auto;
+}
+
+@supports (-webkit-touch-callout: none) {
+    .sheet {
+        /* width: calc(100% - 32px); */
+        /* width: calc(100% - 32px); */
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        border-radius: 45px;
+    }
+}

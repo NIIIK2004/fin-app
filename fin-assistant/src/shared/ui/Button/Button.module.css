@@ -1,0 +1,31 @@
+.button {
+    transition: 0.2s ease;
+    font-family: var(--font-family);
+    font-weight: 600;
+
+    color: var(--black-text);
+    background: var(--key-1);
+
+    border: none;
+    cursor: pointer;
+
+    width: fit-content;
+}
+
+.auto {
+    width: fit-content;
+}
+
+.full {
+    width: 100%;
+}
+
+.button:active {
+    transform: scale(0.97);
+}
+
+.disabled {
+    background: var(--gray-line);
+    cursor: not-allowed;
+    color: var(--gray-text);
+}

@@ -146,7 +146,7 @@ export const CreateGoalPage = () => {
                     <p>Target: {stepTwoData.targetAmount}</p>
                     <p>Percent: {stepTwoData.incomePercent}%</p>
 
-                    <button onClick={() => (window.location.href = "/")}>
+                    <button onClick={() => (window.location.href = "/home")}>
                         Go Home
                     </button>
 

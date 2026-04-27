@@ -3,6 +3,7 @@ export type Goal = {
     title: string;
     description: string;
     emoji: string;
+    type: string;
 
     targetAmount: number;
     currentAmount: number;
@@ -11,4 +12,6 @@ export type Goal = {
 
     isCompleted: boolean;
     createdAt: number;
+
+    userId: string;
 }

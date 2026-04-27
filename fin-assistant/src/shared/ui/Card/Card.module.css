@@ -1,0 +1,12 @@
+.card {
+    background: var(--gray-bg);
+    border: 1px solid transparent;
+    transition: 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}

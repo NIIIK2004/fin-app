@@ -1,3 +1,4 @@
+import { auth } from "../../../app/providers/auth";
 import { createGoal } from "./repository";
 import type { Goal } from "./types";
 
@@ -33,6 +34,10 @@ export const checkGoalCompletion = (
 export const createGoalService = async (
     payload: CreateGoalPayload
 ) => {
+    const uid = auth.currentUser?.uid;
+
+    if (!uid) throw new Error("No user");
+
     validateGoalPercent(payload.incomePercent)
 
     const isCompleted = checkGoalCompletion(
@@ -42,6 +47,7 @@ export const createGoalService = async (
 
     const goalData: Omit<Goal, "id"> = {
         ...payload,
+        userId: uid,
         isCompleted,
         createdAt: Date.now(),
     }

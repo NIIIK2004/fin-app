@@ -1,0 +1,130 @@
+/* .header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.amount {
+    margin-top: 6px;
+    color: var(--gray-text);
+    font-size: 14px;
+}
+
+.badges {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.badge {
+    background: var(--gray-bg);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.progressBar {
+    margin-top: 18px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--gray-bg);
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--key-1);
+    border-radius: 999px;
+} */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.titleEmoji {
+    background: var(--white-bg);
+    border-radius: 100px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.title h2 {
+    color: var(--black-text);
+}
+
+.badgesWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 13px;
+}
+
+.progressBar {
+    position: relative;
+    border-radius: 500px;
+    background: rgba(137, 243, 30, 0.2);
+    height: 30px;
+    width: 180px;
+    overflow: hidden;
+}
+
+.currentAmount {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--black-text);
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--key-1);
+}
+
+.badges {
+    display: flex;
+    align-items: center;
+}
+
+.badge {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 130%;
+
+    border-radius: 500px;
+    padding: 7px 14px;
+    background: var(--key-1);
+    color: var(--black-text);
+}
+
+.badge:not(:first-child) {
+    background: var(--white-bg);
+    color: var(--gray-text);
+    margin-left: -9px;
+}

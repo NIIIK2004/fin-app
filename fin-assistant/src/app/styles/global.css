@@ -1,0 +1,151 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --white-bg: #fffdfe;
+
+  --black-text: #2c2c2c;
+  --black-bg: #000;
+
+  --gray-line: #d8d8d8;
+  --gray-text: #b4b4b4;
+  --gray-text-02: #bebebe;
+  --gray-bg: #efefed;
+
+  --green-text: #78a812;
+
+  --key-1: #aef11e;
+
+  --font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+
+body {
+  background-color: var(--white-bg);
+  font-family: var(--font-family);
+}
+
+
+button {
+  cursor: pointer;
+  font-family: var(--font-family);
+  color: var(--black-text);
+  outline: none;
+  border: 1px solid transparent;
+}
+
+li {
+  width: -webkit-fill-available;
+}
+
+.titleModal {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 31px;
+  line-height: 130%;
+  color: var(--black-text);
+}
+
+.titleBody {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 130%;
+  color: var(--black-text);
+}
+
+.titleDescriptionModal {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 130%;
+  /* color: var(--gray-text); */
+}
+
+.container {
+  max-width: 1850px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+
+.smallButtonWhite {
+  background: var(--white-bg);
+  font-weight: 500;
+  line-height: 130%;
+  color: var(--gray-text);
+  padding: 7px 15px !important;
+}
+
+
+.line {
+  height: 1px;
+  background: var(--gray-line);
+  width: 100%;
+}
+
+.circle {
+  border-radius: 800px;
+  padding: 10px;
+  width: 38px;
+  height: 38px;
+}
+
+/* Кастомизация скроллбара */
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 5px;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--gray-line);
+  border-radius: 100px;
+}
+
+::-moz-scrollbar {
+  background-color: var(--gray-line);
+  width: 5px;
+}
+
+::-moz-scrollbar-thumb {
+  background-color: var(--gray-line);
+}
+
+
+/* loader */
+
+.loader {
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border-radius: 50%;
+  position: relative;
+  animation: roll 2s ease-in-out infinite alternate;
+}
+
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 5px solid;
+  border-color: var(--key-1) transparent;
+}
+
+@keyframes roll {
+  0% {
+    transform: translateX(0%) rotate(0deg);
+  }
+
+  100% {
+    transform: translateX(800%) rotate(360deg);
+  }
+}
