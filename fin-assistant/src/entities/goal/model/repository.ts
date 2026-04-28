@@ -1,7 +1,7 @@
-import { addDoc, collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, query, updateDoc, where, writeBatch } from "firebase/firestore";
+import { auth } from "../../../app/providers/auth";
 import { db } from "../../../app/providers/firebase";
 import type { Goal } from "./types";
-import { auth } from "../../../app/providers/auth";
 
 const goalsCollection = collection(db, "goals");
 
@@ -29,22 +29,18 @@ export const getGoals = async (): Promise<Goal[]> => {
     })) as Goal[];
 };
 
-export const updateGoal = async (
-    id: string,
-    data: Partial<Goal>
-) => {
-    const goalRef = doc(db, "goals", id)
-    await updateDoc(goalRef, data)
-}
-
 export const updateGoalsBatch = async (goals: Goal[]) => {
-    const promises = goals.map((goal) =>
-        updateGoal(goal.id, {
+    const batch = writeBatch(db);
+
+    goals.forEach((goal) => {
+        const ref = doc(db, "goals", goal.id);
+
+        batch.update(ref, {
             currentAmount: goal.currentAmount,
             isCompleted:
                 goal.currentAmount >= goal.targetAmount,
-        })
-    );
+        });
+    });
 
-    await Promise.all(promises);
+    await batch.commit();
 };

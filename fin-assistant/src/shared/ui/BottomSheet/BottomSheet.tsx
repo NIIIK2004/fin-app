@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./BottomSheet.module.css";
+import { useEffect } from "react";
 
 type BottomSheetProps = {
     isOpen: boolean;
@@ -21,6 +22,18 @@ export const BottomSheet = ({
             onClose();
         }
     };
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isOpen]);
 
     return (
         <AnimatePresence>

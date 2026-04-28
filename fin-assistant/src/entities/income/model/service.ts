@@ -1,63 +1,54 @@
+import { auth } from "../../../app/providers/auth";
 import { getGoals, updateGoalsBatch } from "../../goal/model/repository";
-import type { Goal } from "../../goal/model/types";
+import { calculateIncomePreview } from "../../goal/model/service";
 import { createTransaction } from "../../transaction/model/repository";
 
-export const distributeIncome = (
+export const addIncomeService = async (
     income: number,
-    goals: Goal[]
+    note?: string
 ) => {
-    return goals.map((goal) => {
-        const part =
-            (income * goal.incomePercent) / 100;
-
-        return {
-            ...goal,
-            currentAmount: goal.currentAmount + part,
-        };
-    });
-};
-
-export const addIncomeService = async (income: number) => {
     const goals = await getGoals();
+    const uid = auth.currentUser?.uid;
+
+    if (!uid) {
+        throw new Error("No user");
+    }
 
     if (!goals.length) {
         throw new Error("No goals found");
     }
 
-    //* 1. Считаем распределение для истории
-    const distributions = goals.map((goal) => {
-        const amount =
-            (income * goal.incomePercent) / 100;
+    const preview = calculateIncomePreview(
+        income,
+        goals
+    );
+
+    const updatedGoals = goals.map((goal) => {
+        const distribution = preview.distributions.find(
+            (item) => item.goalId === goal.id
+        );
+
+        if (!distribution) {
+            return goal;
+        }
 
         return {
-            goalId: goal.id,
-            goalTitle: goal.title,
-            amount,
+            ...goal,
+            currentAmount:
+                goal.currentAmount + distribution.amount,
         };
     });
 
-    //* 2. Обновляем цели
-    const updatedGoals: Goal[] = goals.map(
-        (goal) => {
-            const add =
-                (income * goal.incomePercent) / 100;
-
-            return {
-                ...goal,
-                currentAmount:
-                    goal.currentAmount + add,
-            };
-        }
-    );
-
     await updateGoalsBatch(updatedGoals);
 
-    //* 3. Создаём транзакцию
     await createTransaction({
         type: "income",
         amount: income,
-        distributions,
+        note: note ?? "",
+        freeBalance: preview.freeBalance,
+        distributions: preview.distributions,
         createdAt: Date.now(),
+        userId: uid,
     });
 
     return updatedGoals;

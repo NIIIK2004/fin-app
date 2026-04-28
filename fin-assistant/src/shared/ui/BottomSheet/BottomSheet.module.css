@@ -5,20 +5,24 @@
     z-index: 10;
     backdrop-filter: blur(1.5px);
     background: rgba(0, 0, 0, 0.45);
-
 }
 
 .sheet {
+    /* overflow-y: auto; */
+    display: flex;
+    flex-direction: column;
     min-height: 400px;
+    max-height: 600px;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 25px;
+    padding: 22px;
     /* width: calc(100% - 32px); */
     z-index: 20;
     border-radius: 45px 45px 0 0;
     background: var(--white-bg);
+    border-bottom: 1px solid var(--white-bg);
 }
 
 .handle {
@@ -30,6 +34,17 @@
     margin: 0 auto 12px auto;
 }
 
+.sheet::after {
+    border-top: 1px solid var(--white-bg);
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -400px;
+    height: 400px;
+    background: var(--white-bg);
+}
+
 @supports (-webkit-touch-callout: none) {
     .sheet {
         /* width: calc(100% - 32px); */
@@ -39,4 +54,9 @@
         right: 12px;
         border-radius: 45px;
     }
+
+    .sheet::after {
+        display: none;
+    }
+
 }

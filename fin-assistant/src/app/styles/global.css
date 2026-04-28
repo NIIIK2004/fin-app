@@ -30,6 +30,7 @@
 body {
   background-color: var(--white-bg);
   font-family: var(--font-family);
+  touch-action: manipulation;
 }
 
 
@@ -81,8 +82,21 @@ li {
   line-height: 130%;
   color: var(--gray-text);
   padding: 7px 15px !important;
+  font-size: 11px !important;
+  width: fit-content !important;
 }
 
+.smallButtonGray {
+  background: var(--gray-bg);
+  font-weight: 500;
+  line-height: 130%;
+  color: var(--gray-text);
+  padding: 7px 15px !important;
+  font-size: 11px !important;
+  width: fit-content !important;
+  border-radius: 100px !important;
+  height: fit-content;
+}
 
 .line {
   height: 1px;

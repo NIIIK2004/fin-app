@@ -74,9 +74,6 @@ export const KanyeQuote = () => {
                     <div className={styles.actions}>
                         <Button
                             className="smallButtonWhite"
-                            fontSize={11}
-                            radius={500}
-                            width="auto"
                             onClick={translate}
                         >
                             {mode === "en" ? "Translate quote" : "Show original"}
@@ -84,9 +81,6 @@ export const KanyeQuote = () => {
 
                         <Button
                             className="smallButtonWhite"
-                            fontSize={11}
-                            radius={500}
-                            width="auto"
                             onClick={fetchQuote}
                         >
                             New

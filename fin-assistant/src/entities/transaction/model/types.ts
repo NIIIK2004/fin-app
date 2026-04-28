@@ -1,13 +1,15 @@
-export type TransactionDistribution = {
-    goalId: string;
-    goalTitle: string;
-    amount: number;
-}
-
 export type Transaction = {
     id: string;
     type: "income";
     amount: number;
-    distributions: TransactionDistribution[];
+    note?: string;
+    freeBalance: number;
+    distributions: {
+        goalId: string;
+        goalTitle: string;
+        amount: number;
+    }[];
+
     createdAt: number;
+    userId: string;
 };
