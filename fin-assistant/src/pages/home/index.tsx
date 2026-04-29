@@ -8,75 +8,87 @@ import { GoalCard } from "../../widgets/GoalCard";
 import { KanyeQuote } from "../../widgets/KanyeQuote";
 import { CreateGoalPage } from "../create-goal";
 import styles from "./home.module.css";
+import { Header } from "../../widgets/Header";
+import { BottomActions } from "../../widgets/BottomActions";
+import { GoalCardSkeleton } from "../../widgets/GoalCard/GoalCardSkeleton";
+import { EmptyGoalsState } from "../../widgets/EmptyGoalsState";
 
 export const HomePage = () => {
   const { goals, loading, refetch } = useGoals();
   const [isGoalOpen, setGoalOpen] = useState(false);
   const [isIncomeOpen, setIncomeOpen] = useState(false);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  if (!loading && !goals.length) {
+    return (
+      <div className="container">
+        <Header
+          onHistoryClick={() => { }}
+          onSettingsClick={() => { }}
+        />
 
-  if (!goals.length) {
-    return <div>No goals yet
-      <Button className="smallButtonWhite" onClick={logoutUser}>
-        Выйти из аккаунта
-      </Button>
-      <Button onClick={() => setGoalOpen(true)}>
-        Создать цель
-      </Button>
-      
-      <BottomSheet isOpen={isGoalOpen} onClose={() => setGoalOpen(false)}>
-        <CreateGoalPage />
-      </BottomSheet>
-      </div>;
+        <EmptyGoalsState
+          onCreateGoal={() => setGoalOpen(true)}
+        />
+
+        <BottomSheet isOpen={isGoalOpen} onClose={() => setGoalOpen(false)}>
+          <CreateGoalPage />
+        </BottomSheet>
+      </div>
+    );
   }
 
   return (
-    <div className="container">
-      <h1>Home</h1>
+    <div className={styles.page}>
 
-      <KanyeQuote />
+      <div className="container">
 
-      <section className={styles.sectionGoals}>
-        {goals.map((goal) => (
-          <GoalCard
-            currentAmount={goal.currentAmount}
-            emoji={goal.emoji}
-            incomePercent={goal.incomePercent}
-            title={goal.title}
-            type="goal"
-            targetAmount={goal.targetAmount}
-            key={goal.id}
+        <Header
+          onHistoryClick={() => { }}
+          onSettingsClick={() => { }}
+        />
+
+        <main className={styles.content}>
+          <KanyeQuote />
+          <div className={styles.sectionGoals}>
+            {loading
+              ? Array.from({ length: 3 }).map((_, index) => (
+                <GoalCardSkeleton key={index} />
+              ))
+              : goals.map((goal) => (
+                <GoalCard
+                  key={goal.id}
+                  currentAmount={goal.currentAmount}
+                  emoji={goal.emoji}
+                  incomePercent={goal.incomePercent}
+                  title={goal.title}
+                  type="goal"
+                  targetAmount={goal.targetAmount}
+                />
+              ))}
+          </div>
+
+          <BottomActions
+            onCreateGoal={() => setGoalOpen(true)}
+            onAddIncome={() => setIncomeOpen(true)}
+            onCreateExpense={() => { }}
           />
-        ))}
-      </section>
+        </main>
 
+        <BottomSheet isOpen={isGoalOpen} onClose={() => setGoalOpen(false)}>
+          <CreateGoalPage />
+        </BottomSheet>
 
-      <Button onClick={() => setGoalOpen(true)}>
-        Создать цель
-      </Button>
+        <AddIncomeSheet
+          isOpen={isIncomeOpen}
+          onClose={() => setIncomeOpen(false)}
+        />
 
-      <Button onClick={() => setIncomeOpen(true)}>
-        Add Income
-      </Button>
+        <Button className="smallButtonWhite" onClick={logoutUser}>
+          Выйти из аккаунта
+        </Button>
 
-
-      <Button className="smallButtonWhite" onClick={logoutUser}>
-        Выйти из аккаунта
-      </Button>
-
-
-      <BottomSheet isOpen={isGoalOpen} onClose={() => setGoalOpen(false)}>
-        <CreateGoalPage />
-      </BottomSheet>
-
-      <AddIncomeSheet
-        isOpen={isIncomeOpen}
-        onClose={() => setIncomeOpen(false)}
-      />
-
+      </div>
     </div>
+
   );
 };

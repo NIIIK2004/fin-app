@@ -1,3 +1,4 @@
+import { formatCurrency } from "../../shared/lib/formatters/formatCurrency";
 import { Card } from "../../shared/ui/Card/Card";
 import styles from "./GoalCard.module.css";
 
@@ -32,7 +33,7 @@ export const GoalCard = ({
                 </div>
 
                 <div className={styles.amountTarget}>
-                    <h2 className="titleBody">{targetAmount}</h2>
+                    <h2 className="titleBody">{formatCurrency(targetAmount)}</h2>
                 </div>
             </div>
 
@@ -45,7 +46,7 @@ export const GoalCard = ({
                         }}
                     />
                     <p className={styles.currentAmount}>
-                        {currentAmount}
+                        {formatCurrency(currentAmount)}
                     </p>
                 </div>
 
@@ -59,38 +60,6 @@ export const GoalCard = ({
                 </div>
 
             </div>
-
-
-            {/* <div className={styles.header}>
-                <div>
-                    <div className={styles.title}>
-                        {emoji} {title}
-                    </div>
-
-                    <div className={styles.amount}>
-                        {currentAmount} / {targetAmount}
-                    </div>
-                </div>
-
-                <div className={styles.badges}>
-                    <span className={styles.badge}>
-                        {type}
-                    </span>
-
-                    <span className={styles.badge}>
-                        {incomePercent}%
-                    </span>
-                </div>
-            </div>
-
-            <div className={styles.progressBar}>
-                <div
-                    className={styles.progressFill}
-                    style={{
-                        width: `${progress}%`,
-                    }}
-                />
-            </div> */}
         </Card>
     );
 };

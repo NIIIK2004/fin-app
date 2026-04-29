@@ -12,6 +12,7 @@ import { getTransactions } from "../../../../entities/transaction/model/reposito
 
 import type { Goal } from "../../../../entities/goal/model/types";
 import clsx from 'clsx';
+import { formatCurrency } from "../../../../shared/lib/formatters/formatCurrency";
 
 type Props = {
     isOpen: boolean;
@@ -81,7 +82,7 @@ export const AddIncomeSheet = ({ isOpen, onClose }: Props) => {
                                     className={clsx(styles.preset, selected === "last" ? styles.active : "")}
                                     onClick={() => setSelected("last")}
                                 >
-                                    {lastIncome}₽
+                                    {formatCurrency(lastIncome)}
 
                                     <span className={styles.lastBlock}>last add</span>
                                 </button>
@@ -92,7 +93,7 @@ export const AddIncomeSheet = ({ isOpen, onClose }: Props) => {
                                         className={clsx(styles.preset, selected === p ? styles.active : "")}
                                         onClick={() => setSelected(p)}
                                     >
-                                        {p}₽
+                                        {formatCurrency(p)}
                                     </button>
                                 ))}
 
@@ -143,13 +144,13 @@ export const AddIncomeSheet = ({ isOpen, onClose }: Props) => {
                                         </div>
                                         <span>{d.goalTitle}</span>
                                         <span>=</span>
-                                        <span>{d.amount} ₽</span>
+                                        <span>{formatCurrency(d.amount)}</span>
                                     </li>
                                 ))}
                             </ul>
 
                             <div className={styles.free}>
-                                Free: {preview.freeBalance} ₽
+                                Free: {formatCurrency(preview.freeBalance)} ₽
                             </div>
                         </li>
                     )}
@@ -160,7 +161,7 @@ export const AddIncomeSheet = ({ isOpen, onClose }: Props) => {
 
                 <div className={styles.summary}>
                     <p>Total added income:</p>
-                    <p>{amountValue} ₽</p>
+                    <p>{formatCurrency(amountValue)}</p>
                 </div>
                 <Button
                     disabled={!amountValue || amountValue <= 0}

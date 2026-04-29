@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./KanyeQuote.module.css";
 import { Card } from "../../shared/ui/Card/Card";
 import { Button } from '../../shared/ui/Button/Button';
+import { KanyeQuoteSkeleton } from "./KanyeQuoteSkeleton";
 
 export const KanyeQuote = () => {
     const [quote, setQuote] = useState("");
@@ -60,7 +61,7 @@ export const KanyeQuote = () => {
     return (
         <div className={styles.wrapper}>
             {loading ? (
-                <span className="loader"></span>
+                <KanyeQuoteSkeleton />
             ) : (
                 <>
                     <p className="titleDescriptionModal">

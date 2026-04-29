@@ -3,3 +3,21 @@
     flex-direction: column;
     gap: 5px;
 }
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.page {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 120px;
+    position: relative;
+    margin-top: 75px;
+}
+

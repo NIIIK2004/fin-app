@@ -65,7 +65,7 @@ li {
 .titleDescriptionModal {
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 130%;
   /* color: var(--gray-text); */
 }
@@ -79,7 +79,7 @@ li {
 .smallButtonWhite {
   background: var(--white-bg);
   font-weight: 500;
-  line-height: 130%;
+  line-height: 100%;
   color: var(--gray-text);
   padding: 7px 15px !important;
   font-size: 11px !important;
@@ -133,33 +133,7 @@ li {
   background-color: var(--gray-line);
 }
 
-
-/* loader */
-
-.loader {
-  width: 48px;
-  height: 48px;
-  background: #fff;
-  border-radius: 50%;
-  position: relative;
-  animation: roll 2s ease-in-out infinite alternate;
-}
-
-.loader:after {
-  content: "";
-  position: absolute;
-  inset: 5px;
-  border-radius: 50%;
-  border: 5px solid;
-  border-color: var(--key-1) transparent;
-}
-
-@keyframes roll {
-  0% {
-    transform: translateX(0%) rotate(0deg);
-  }
-
-  100% {
-    transform: translateX(800%) rotate(360deg);
-  }
+::selection {
+ background: var(--key-1);
+ color: var(--black-text);
 }
