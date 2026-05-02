@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDocs, query, updateDoc, where, writeBatch } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, query, where, writeBatch } from "firebase/firestore";
 import { auth } from "../../../app/providers/auth";
 import { db } from "../../../app/providers/firebase";
 import type { Goal } from "./types";

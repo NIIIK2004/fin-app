@@ -6,13 +6,13 @@ import { createGoalService } from "../../entities/goal/model/service";
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronRight, Goal, Undo2 } from "lucide-react";
+import toast from "react-hot-toast";
 import { EmojiSheet } from "../../features/emoji-picker/ui/EmojiSheet";
 import { formatCurrency, formatPercent, parseNumber } from "../../shared/lib/formatters/formatCurrency";
 import { Button } from "../../shared/ui/Button/Button";
 import { Input } from '../../shared/ui/Input/Input';
 import { StepProgress } from "../../shared/ui/StepProgress/StepProgress";
 import { Textarea } from "../../shared/ui/Textarea/Textarea";
-import toast from "react-hot-toast";
 
 type StepOneData = {
     title: string;
