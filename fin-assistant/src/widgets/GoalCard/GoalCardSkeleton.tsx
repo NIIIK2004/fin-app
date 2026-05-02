@@ -3,6 +3,6 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 export const GoalCardSkeleton = () => {
     return (
-        <Skeleton borderRadius={24} width={361} height={112} />
+        <Skeleton borderRadius={24} width="100%" height={112} />
     );
 };

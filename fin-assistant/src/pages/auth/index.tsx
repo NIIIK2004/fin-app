@@ -36,7 +36,7 @@ export const AuthPage = () => {
                 <p className="titleDescriptionModal">Simple data for log in</p>
 
                 <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} className={styles.authForm}>
-                    <li>
+                    <li style={{width: "-webkit-fill-available"}}>
                         <Input
                             width="full"
                             onChange={setEmail}
@@ -45,7 +45,7 @@ export const AuthPage = () => {
                             value={email}
                         />
                     </li>
-                    <li>
+                    <li style={{width: "-webkit-fill-available"}}>
                         <Input
                             width="full"
                             onChange={setPassword}

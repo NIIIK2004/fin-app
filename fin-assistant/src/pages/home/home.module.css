@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin-top: 10px;
 }
 
 .page {
@@ -21,3 +22,26 @@
     margin-top: 75px;
 }
 
+
+.tabs {
+    display: flex;
+    align-items: center;
+
+    /* position: fixed;
+    left: 0;
+    right: 0;
+    top: 68px;
+    background: var(--white-bg);
+    z-index: 10; */
+}
+
+.tab {
+    background: transparent !important;
+    color: var(--gray-text);
+    transition: 0.2s ease;
+}
+
+.active {
+    background: var(--gray-bg) !important;
+    color: var(--black-text);
+}

@@ -10,6 +10,8 @@ import { HomePage } from "./pages/home";
 import { NotFoundPage } from "./pages/not-found";
 import "./app/styles/reset.css";
 import "./app/styles/global.css";
+import "./app/styles/fonts.css";
+import { ComingSoonPage } from "./pages/coming-soon";
 
 
 const router = createBrowserRouter([
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <CreateGoalPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "settings",
+        element: (
+          <ProtectedRoute>
+            <ComingSoonPage />
           </ProtectedRoute>
         ),
       },

@@ -6,7 +6,7 @@
 
     /* margin-top: 69px; */
     background: var(--white-bg);
-    padding: 11px 16px;
+    padding: 7px 16px;
 
     display: flex;
     align-items: center;
@@ -46,4 +46,71 @@
 
 
 
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
 
+.menuWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.menuBtn {
+    color: var(--gray-text);
+    font-weight: 600;
+    font-size: 31px;
+    line-height: 130%;
+}
+
+.active {
+    color: var(--black-text);
+    text-decoration: underline !important;
+    text-underline-offset: 6px;
+    font-weight: 600;
+    font-size: 31px;
+    line-height: 130%;
+}
+
+.menuBtnLogout {
+    background: transparent;
+    font-size: 21px;
+    color: var(--gray-text);
+}
+
+.logoTitle {
+    font-size: 52px;
+    margin-top: auto;
+    font-weight: 700;
+    line-height: 130%;
+    color: var(--gray-text);
+    transition: all .3s;
+}
+
+.logoTitle:hover {
+    color: var(--black-text);
+}
+
+
+/* 
+.menu button {
+  background: transparent;
+  border: none;
+
+  font-size: 18px;
+  text-align: left;
+
+  padding: 12px;
+  border-radius: 12px;
+
+  color: var(--black-text);
+}
+
+.menu button:active {
+  background: var(--gray-bg);
+}
+
+
+ */

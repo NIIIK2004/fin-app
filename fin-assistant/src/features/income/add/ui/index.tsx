@@ -13,17 +13,19 @@ import { getTransactions } from "../../../../entities/transaction/model/reposito
 import type { Goal } from "../../../../entities/goal/model/types";
 import clsx from 'clsx';
 import { formatCurrency } from "../../../../shared/lib/formatters/formatCurrency";
+import toast from "react-hot-toast";
 
 type Props = {
     isOpen: boolean;
     onClose: () => void;
+    onSuccess?: () => void;
 };
 
 const presets = [5000, 10000, 15000, 20000];
 
 type Selected = "last" | "enter" | number;
 
-export const AddIncomeSheet = ({ isOpen, onClose }: Props) => {
+export const AddIncomeSheet = ({ isOpen, onClose, onSuccess }: Props) => {
     const [goals, setGoals] = useState<Goal[]>([]);
     const [transactions, setTransactions] = useState<any[]>([]);
 
@@ -58,9 +60,12 @@ export const AddIncomeSheet = ({ isOpen, onClose }: Props) => {
 
         await addIncomeService(amountValue, note);
 
+        toast.success("Доход добавлен 💸");
         setCustomValue("");
         setNote("");
         setSelected("last");
+
+        onSuccess?.();
 
         onClose();
     };

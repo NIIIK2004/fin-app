@@ -14,6 +14,10 @@ optgroup {
     color: var(--black);
 }
 
+a {
+    color: currentcolor;
+}
+
 body,
 code,
 dl,
@@ -23,23 +27,23 @@ pre {
     margin: 0;
 }
 
-a:link {
+/* a:link {
     color: var(--black);
-}
+} */
 
 a:link,
 a:visited,
 ins {
-    text-decoration: none;
+    text-decoration: unset;
 }
 
-a:visited {
+/* a:visited {
     color: var(--black);
-}
+} */
 
-a:hover {
+/* a:hover {
     text-decoration: underline;
-}
+} */
 
 a:link img,
 a:visited img,

@@ -1,3 +1,104 @@
-.wrapper {
-  padding: 24px;
+.sectionTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  text-align: center;
+  align-items: center;
+  margin-top: 75px;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 40px 0;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.bottom {
+  /* margin-top: auto;
+  display: flex;
+  gap: 12px; */
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: 10px;
+  padding: 13px;
+  border-radius: 25px 25px 0 0;
+  background: var(--white-bg);
+  justify-content: center;
+  z-index: 1;
+  align-items: center;
+}
+
+.secondary {
+  background: var(--gray-bg);
+}
+
+
+.sectionEmodji {
+  display: flex;
+  gap: 15px;
+  background: var(--gray-bg);
+  border-radius: 24px;
+  padding: 13px 20px;
+  align-items: center;
+}
+
+.emoji {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 130%;
+  color: var(--black-bg);
+}
+
+.emojiText {
+  display: flex;
+  flex-direction: column;
+}
+
+.emojiText p {
+  color: var(--gray-text);
+}
+
+.split {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.createdText {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 13px;
+  text-align: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.createdText p {
+  color: var(--gray-text);
+}
+
+.success {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }

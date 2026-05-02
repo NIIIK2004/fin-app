@@ -1,38 +1,34 @@
+import clsx from "clsx";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../app/providers/auth";
 import { useGoals } from "../../features/income/add/hooks/useGoals";
 import { AddIncomeSheet } from "../../features/income/add/ui";
 import { BottomSheet } from "../../shared/ui/BottomSheet/BottomSheet";
 import { Button } from "../../shared/ui/Button/Button";
+import { BottomActions } from "../../widgets/BottomActions";
+import { EmptyGoalsState } from "../../widgets/EmptyGoalsState";
 import { GoalCard } from "../../widgets/GoalCard";
+import { GoalCardSkeleton } from "../../widgets/GoalCard/GoalCardSkeleton";
 import { KanyeQuote } from "../../widgets/KanyeQuote";
 import { CreateGoalPage } from "../create-goal";
 import styles from "./home.module.css";
-import { Header } from "../../widgets/Header";
-import { BottomActions } from "../../widgets/BottomActions";
-import { GoalCardSkeleton } from "../../widgets/GoalCard/GoalCardSkeleton";
-import { EmptyGoalsState } from "../../widgets/EmptyGoalsState";
+
+type ViewMode = "smart" | "goals" | "expense";
 
 export const HomePage = () => {
+  const [mode, setMode] = useState<ViewMode>("smart");
   const { goals, loading, refetch } = useGoals();
   const [isGoalOpen, setGoalOpen] = useState(false);
   const [isIncomeOpen, setIncomeOpen] = useState(false);
+  const navigate = useNavigate();
 
   if (!loading && !goals.length) {
     return (
       <div className="container">
-        <Header
-          onHistoryClick={() => { }}
-          onSettingsClick={() => { }}
-        />
-
         <EmptyGoalsState
           onCreateGoal={() => setGoalOpen(true)}
         />
-
-        <BottomSheet isOpen={isGoalOpen} onClose={() => setGoalOpen(false)}>
-          <CreateGoalPage />
-        </BottomSheet>
       </div>
     );
   }
@@ -41,38 +37,105 @@ export const HomePage = () => {
     <div className={styles.page}>
 
       <div className="container">
-
-        <Header
-          onHistoryClick={() => { }}
-          onSettingsClick={() => { }}
-        />
+        <ul className={styles.tabs}>
+          <li>
+            <Button
+              className={clsx(styles.tab, mode === "smart" && styles.active)}
+              fontSize={21}
+              radius={100}
+              // padding={13, 19}
+              width="auto"
+              onClick={() => setMode("smart")}
+            >
+              Smart
+            </Button>
+          </li>
+          <li>
+            <Button
+              className={clsx(styles.tab, mode === "goals" && styles.active)}
+              fontSize={21}
+              radius={100}
+              // padding={13, 19}
+              width="auto"
+              onClick={() => setMode("goals")}
+            >
+              Goals
+            </Button>
+          </li>
+          <li>
+            <Button
+              className={clsx(styles.tab, mode === "expense" && styles.active)}
+              fontSize={21}
+              radius={100}
+              // padding={13, 19}
+              width="auto"
+              onClick={() => setMode("expense")}
+            >
+              Expense
+            </Button>
+          </li>
+        </ul>
 
         <main className={styles.content}>
-          <KanyeQuote />
-          <div className={styles.sectionGoals}>
-            {loading
-              ? Array.from({ length: 3 }).map((_, index) => (
-                <GoalCardSkeleton key={index} />
-              ))
-              : goals.map((goal) => (
-                <GoalCard
-                  key={goal.id}
-                  currentAmount={goal.currentAmount}
-                  emoji={goal.emoji}
-                  incomePercent={goal.incomePercent}
-                  title={goal.title}
-                  type="goal"
-                  targetAmount={goal.targetAmount}
-                />
-              ))}
-          </div>
+          {mode === "smart" && (
+            <>
+              <KanyeQuote />
+              <div className={styles.sectionGoals}>
+                {loading
+                  ? Array.from({ length: 3 }).map((_, i) => (
+                    <GoalCardSkeleton key={i} />
+                  ))
+                  : goals.slice(0, 5).map((goal) => (
+                    <GoalCard
+                      key={goal.id}
+                      currentAmount={goal.currentAmount}
+                      emoji={goal.emoji}
+                      incomePercent={goal.incomePercent}
+                      title={goal.title}
+                      type="goal"
+                      targetAmount={goal.targetAmount}
+                    />
+                  ))}
+              </div>
+              <div>
+                Transactions section (потом добавим)
+              </div>
+            </>
+          )}
 
-          <BottomActions
-            onCreateGoal={() => setGoalOpen(true)}
-            onAddIncome={() => setIncomeOpen(true)}
-            onCreateExpense={() => { }}
-          />
+          {mode === "goals" && (
+            <div className={styles.sectionGoals}>
+              {loading
+                ? Array.from({ length: 3 }).map((_, i) => (
+                  <GoalCardSkeleton key={i} />
+                ))
+                : goals.map((goal) => (
+                  <GoalCard
+                    key={goal.id}
+                    currentAmount={goal.currentAmount}
+                    emoji={goal.emoji}
+                    incomePercent={goal.incomePercent}
+                    title={goal.title}
+                    type="goal"
+                    targetAmount={goal.targetAmount}
+                  />
+                ))}
+            </div>
+          )}
+
+          {mode === "expense" && (
+            <div className={styles.empty}>
+              Expenses пока пустые
+            </div>
+          )}
+
         </main>
+
+        <BottomActions
+          onCreateGoal={() => navigate("/create-goal")}
+          onAddIncome={() => setIncomeOpen(true)}
+          onCreateExpense={() => { }}
+        />
 
         <BottomSheet isOpen={isGoalOpen} onClose={() => setGoalOpen(false)}>
           <CreateGoalPage />
@@ -81,6 +144,7 @@ export const HomePage = () => {
         <AddIncomeSheet
           isOpen={isIncomeOpen}
           onClose={() => setIncomeOpen(false)}
+          onSuccess={refetch}
         />
 
         <Button className="smallButtonWhite" onClick={logoutUser}>

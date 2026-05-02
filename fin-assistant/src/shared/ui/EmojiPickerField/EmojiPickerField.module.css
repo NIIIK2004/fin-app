@@ -1,0 +1,20 @@
+.wrapper {
+  position: relative;
+}
+
+.trigger {
+  font-size: 32px;
+  cursor: pointer;
+
+  background: var(--gray-bg);
+  padding: 12px;
+  border-radius: 16px;
+
+  width: fit-content;
+}
+
+.picker {
+  position: absolute;
+  top: 60px;
+  z-index: 10;
+}
