@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import { MainLayout } from "./app/layouts/MainLayout";
 import { ProtectedRoute } from "./app/providers/router/ProtectedRoute";
 import { AuthPage } from "./pages/auth";
@@ -19,6 +19,10 @@ const router = createBrowserRouter([
     path: "/auth",
     element: <AuthPage />,
   },
+  {
+    path: "",
+    element: <Navigate to="/home" replace />,
+  }, 
   {
     path: "/",
     element: <MainLayout />,
