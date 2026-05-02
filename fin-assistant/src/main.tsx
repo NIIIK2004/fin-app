@@ -20,9 +20,9 @@ const router = createBrowserRouter([
     element: <AuthPage />,
   },
   {
-    path: "",
-    element: <Navigate to="/home" replace />,
-  }, 
+    path: "/",
+    element: <Navigate to="/home" replace />
+  },
   {
     path: "/",
     element: <MainLayout />,
@@ -65,7 +65,11 @@ const router = createBrowserRouter([
     path: "*",
     element: <NotFoundPage />,
   },
-]);
+],
+  {
+    basename: "/"
+  }
+);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
