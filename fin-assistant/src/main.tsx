@@ -13,20 +13,21 @@ import "./app/styles/global.css";
 import "./app/styles/fonts.css";
 import { ComingSoonPage } from "./pages/coming-soon";
 
-
 const router = createBrowserRouter([
   {
     path: "/auth",
     element: <AuthPage />,
   },
-  {
-    path: "/",
-    element: <Navigate to="/home" replace />
-  },
+
   {
     path: "/",
     element: <MainLayout />,
     children: [
+      {
+        index: true,
+        element: <Navigate to="/home" replace />
+      },
+
       {
         path: "home",
         element: (
@@ -61,15 +62,69 @@ const router = createBrowserRouter([
       },
     ],
   },
+
   {
     path: "*",
     element: <NotFoundPage />,
   },
-],
-  {
-    basename: "/"
-  }
-);
+]);
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/auth",
+//     element: <AuthPage />,
+//   },
+//   {
+//     path: "/",
+//     element: <Navigate to="/home" replace />
+//   },
+//   {
+//     path: "/",
+//     element: <MainLayout />,
+//     children: [
+//       {
+//         path: "home",
+//         element: (
+//           <ProtectedRoute>
+//             <HomePage />
+//           </ProtectedRoute>
+//         ),
+//       },
+//       {
+//         path: "history",
+//         element: (
+//           <ProtectedRoute>
+//             <HistoryPage />
+//           </ProtectedRoute>
+//         ),
+//       },
+//       {
+//         path: "create-goal",
+//         element: (
+//           <ProtectedRoute>
+//             <CreateGoalPage />
+//           </ProtectedRoute>
+//         ),
+//       },
+//       {
+//         path: "settings",
+//         element: (
+//           <ProtectedRoute>
+//             <ComingSoonPage />
+//           </ProtectedRoute>
+//         ),
+//       },
+//     ],
+//   },
+//   {
+//     path: "*",
+//     element: <NotFoundPage />,
+//   },
+// ],
+//   {
+//     basename: "/"
+//   }
+// );
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
