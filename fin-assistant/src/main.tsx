@@ -12,8 +12,8 @@ import { TransactionsPage } from "./pages/transactions";
 import "./app/styles/reset.css";
 import "./app/styles/global.css";
 import "./app/styles/fonts.css";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 const router = createBrowserRouter([
   {
