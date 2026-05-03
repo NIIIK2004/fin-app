@@ -12,6 +12,8 @@ import { TransactionsPage } from "./pages/transactions";
 import "./app/styles/reset.css";
 import "./app/styles/global.css";
 import "./app/styles/fonts.css";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const router = createBrowserRouter([
   {
@@ -69,66 +71,11 @@ const router = createBrowserRouter([
   },
 ]);
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/auth",
-//     element: <AuthPage />,
-//   },
-//   {
-//     path: "/",
-//     element: <Navigate to="/home" replace />
-//   },
-//   {
-//     path: "/",
-//     element: <MainLayout />,
-//     children: [
-//       {
-//         path: "home",
-//         element: (
-//           <ProtectedRoute>
-//             <HomePage />
-//           </ProtectedRoute>
-//         ),
-//       },
-//       {
-//         path: "history",
-//         element: (
-//           <ProtectedRoute>
-//             <HistoryPage />
-//           </ProtectedRoute>
-//         ),
-//       },
-//       {
-//         path: "create-goal",
-//         element: (
-//           <ProtectedRoute>
-//             <CreateGoalPage />
-//           </ProtectedRoute>
-//         ),
-//       },
-//       {
-//         path: "settings",
-//         element: (
-//           <ProtectedRoute>
-//             <ComingSoonPage />
-//           </ProtectedRoute>
-//         ),
-//       },
-//     ],
-//   },
-//   {
-//     path: "*",
-//     element: <NotFoundPage />,
-//   },
-// ],
-//   {
-//     basename: "/"
-//   }
-// );
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Analytics />
+    <SpeedInsights />
   </React.StrictMode>
 );
 
