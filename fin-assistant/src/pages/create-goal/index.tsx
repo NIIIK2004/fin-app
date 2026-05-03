@@ -134,11 +134,8 @@ export const CreateGoalPage = () => {
                                     <h1 className="titleModal">What are we going to implement?</h1>
                                 </section>
 
-                                <section className={styles.sectionEmodji}>
-                                    <div
-                                        className={styles.emojiField}
-                                        onClick={() => setEmojiOpen(true)}
-                                    >
+                                <section className={styles.sectionEmodji} onClick={() => setEmojiOpen(true)}>
+                                    <div className={styles.emojiField}>
                                         <span className={styles.emoji}>
                                             {stepOne.emoji || "🧃"}
                                         </span>

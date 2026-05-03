@@ -64,7 +64,7 @@ export const KanyeQuote = () => {
                 <KanyeQuoteSkeleton />
             ) : (
                 <>
-                    <p className="titleDescriptionModal">
+                    <p className="titleDescriptionModal" style={{overflow: "auto"}}>
                         “{textToShow}”
                     </p>
 

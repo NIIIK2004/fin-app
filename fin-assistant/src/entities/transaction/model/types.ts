@@ -1,6 +1,6 @@
 export type Transaction = {
     id: string;
-    type: "income";
+    type: "income" | "expense";
     amount: number;
     note?: string;
     freeBalance: number;

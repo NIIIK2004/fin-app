@@ -1,6 +1,6 @@
 import { Hamburger, Settings2 } from "lucide-react";
 import { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { logoutUser } from "../../app/providers/auth";
 import { BottomSheet } from "../../shared/ui/BottomSheet/BottomSheet";
 import styles from "./Header.module.css";
@@ -28,7 +28,7 @@ export const Header = ({
                     className={styles.iconButton}
                     onClick={() => setMenuOpen(true)}
                 >
-                    <Hamburger size={20} />
+                    <Hamburger size={25} />
                 </button>
 
                 <li className={styles.center}>
@@ -49,7 +49,7 @@ export const Header = ({
                         className={styles.iconButton}
                         style={{ width: "fit-content" }}
                     >
-                        <Settings2 size={20} />
+                        <Settings2 size={25} />
                     </NavLink>
 
                 </li>

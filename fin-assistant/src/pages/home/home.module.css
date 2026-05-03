@@ -12,14 +12,22 @@
 }
 
 .page {
-    min-height: 100vh;
+    /* min-height: 100vh;
     min-height: 100dvh;
 
     flex: 1;
     overflow-y: auto;
     padding-bottom: 120px;
     position: relative;
-    margin-top: 75px;
+    margin-top: 75px; */
+
+          /* min-height: 100vh; */
+    /* min-height: 100dvh; */
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 120px;
+    position: relative;
+    margin-top: 78px;
 }
 
 

@@ -104,6 +104,7 @@ select,
 button {
     overflow: visible;
     vertical-align: middle;
+    padding: 0;
 }
 
 legend {

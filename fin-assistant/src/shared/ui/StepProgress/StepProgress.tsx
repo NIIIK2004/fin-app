@@ -10,12 +10,12 @@ export const StepProgress = ({ current, total }: Props) => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.bar}>
+            {/* <div className={styles.bar}>
                 <div
                     className={styles.fill}
                     style={{ width: `${percent}%` }}
                 />
-            </div>
+            </div> */}
 
             <span className={styles.text}>
                 Step {current} of {total}

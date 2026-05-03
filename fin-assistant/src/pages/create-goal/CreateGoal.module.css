@@ -4,11 +4,11 @@
   gap: 13px;
   text-align: center;
   align-items: center;
-  margin-top: 75px;
+  margin-top: 78px;
 }
 
 .page {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   gap: 13px;
@@ -61,7 +61,7 @@
 .emoji {
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 38px;
+  font-size: 35px;
   line-height: 130%;
   color: var(--black-bg);
 }

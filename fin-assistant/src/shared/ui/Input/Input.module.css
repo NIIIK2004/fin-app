@@ -42,7 +42,8 @@
 
 .inputWrapper:focus-within {
     border-color: var(--black-text);
-    transform: scale(1.02);
+    border: 1px solid var(--key-1);
+    /* transform: scale(1.02); */
 }
 
 .buttonAction {

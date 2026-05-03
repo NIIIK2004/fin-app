@@ -8,6 +8,7 @@
     padding: 13px 20px;
     background: var(--gray-bg);
     color: var(--black-text);
+    height: 110px;
 }
 
 .actions {
@@ -15,4 +16,5 @@
     align-items: center;
     gap: 3px;
     margin-left: auto;
+    margin-top: auto;
 }
