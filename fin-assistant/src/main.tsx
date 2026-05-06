@@ -8,7 +8,7 @@ import { ComingSoonPage } from "./pages/coming-soon";
 import { CreateGoalPage } from "./pages/create-goal";
 import { HomePage } from "./pages/home";
 import { NotFoundPage } from "./pages/not-found";
-import { TransactionsPage } from "./pages/transactions";
+import { TransactionsPage } from "./pages/transactionsPage";
 import "./app/styles/reset.css";
 import "./app/styles/global.css";
 import "./app/styles/fonts.css";
