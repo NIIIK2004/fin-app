@@ -145,7 +145,7 @@ export const AddIncomeSheet = ({ isOpen, onClose, onSuccess }: Props) => {
                                 {preview.distributions.map((d) => (
                                     <li key={d.goalId} className={styles.row}>
                                         <div className={styles.rowEmoji}>
-                                            <span>{d.emoji}</span>
+                                            <span>{d.goalEmoji}</span>
                                         </div>
                                         <span>{d.goalTitle}</span>
                                         <span>=</span>
@@ -155,7 +155,7 @@ export const AddIncomeSheet = ({ isOpen, onClose, onSuccess }: Props) => {
                             </ul>
 
                             <div className={styles.free}>
-                                Free: {formatCurrency(preview.freeBalance)} ₽
+                                Free: {formatCurrency(preview.freeBalance)}
                             </div>
                         </li>
                     )}

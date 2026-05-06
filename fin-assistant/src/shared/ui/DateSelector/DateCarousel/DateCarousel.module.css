@@ -1,0 +1,53 @@
+.scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.5px;
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scroll::-webkit-scrollbar {
+    display: none;
+}
+
+
+.week,
+.date {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--gray-text);
+}
+
+
+.day {
+    min-width: 53px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    padding: 18px 14px;
+    border-radius: 90px;
+    background: transparent;
+}
+
+.active {
+    background: var(--key-1);
+    /* padding: 14px 7px 7px 7px; */
+}
+
+.day.active .week {
+    color: var(--black-text);
+}
+
+.day.active .date {
+    color: var(--black-text);
+    /* background: var(--white-bg); */
+    /* border-radius: 100px; */
+    /* padding: 11px; */
+}
+
+.date {}

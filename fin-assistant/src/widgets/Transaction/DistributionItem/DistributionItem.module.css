@@ -1,0 +1,54 @@
+.distribution {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border-radius: 12px;
+    padding: 8px;
+    transition: all .3s;
+    border: 1px solid transparent;
+}
+
+
+.distribution:hover {
+    border: 1px solid var(--gray-line);
+    padding: 8px 16px;
+    background: var(--gray-bg);
+
+}
+
+.distributionLeft {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.distributionEmoji {
+    border-radius: 100px;
+    padding: 8px;
+    background: var(--gray-bg);
+}
+
+.distributionInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.distributionTitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--black-text);
+}
+
+.distributionType {
+    color: var(--gray-text);
+    font-size: 13px;
+}
+
+.amount {
+    color: #e74f35;
+    font-size: 16px;
+    font-weight: 500;
+}
+

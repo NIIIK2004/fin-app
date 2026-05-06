@@ -3,7 +3,7 @@ import { createGoal, getGoals } from "./repository";
 import type { Goal } from "./types";
 
 type Distribution = {
-    emoji: string;
+    goalEmoji: string;
     goalId: string;
     goalTitle: string;
     amount: number;
@@ -111,7 +111,7 @@ export const calculateIncomePreview = (
             distributions.push({
                 goalId: goal.id,
                 goalTitle: goal.title,
-                emoji: goal.emoji,
+                goalEmoji: goal.emoji,
                 amount: actualAmount,
             });
 
@@ -122,6 +122,10 @@ export const calculateIncomePreview = (
     return {
         distributions,
         freeBalance,
-        totalDistributed: amount,
+        // totalDistributed: amount,
+        totalDistributed: distributions.reduce(
+            (sum, d) => sum + d.amount,
+            0
+        ),
     };
 };

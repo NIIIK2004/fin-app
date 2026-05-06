@@ -1,0 +1,21 @@
+.wrapper {
+    gap: 9px;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapperTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.groupWrapper {
+    border-radius: 24px;
+    padding: 13px;
+    background: var(--gray-bg);
+    gap: 18px;
+    display: flex;
+    flex-direction: column;
+}

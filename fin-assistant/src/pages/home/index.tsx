@@ -13,6 +13,7 @@ import { GoalCardSkeleton } from "../../widgets/GoalCard/GoalCardSkeleton";
 import { KanyeQuote } from "../../widgets/KanyeQuote";
 import { CreateGoalPage } from "../create-goal";
 import styles from "./home.module.css";
+import { TransactionsPreview } from "../../widgets/Transaction/TransactionsPreview/TransactionsPreview";
 
 type ViewMode = "smart" | "goals" | "expense";
 
@@ -98,7 +99,7 @@ export const HomePage = () => {
                   ))}
               </div>
               <div>
-                Transactions section (потом добавим)
+                <TransactionsPreview />
               </div>
             </>
           )}

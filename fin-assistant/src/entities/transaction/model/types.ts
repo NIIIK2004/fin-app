@@ -7,6 +7,7 @@ export type Transaction = {
     distributions: {
         goalId: string;
         goalTitle: string;
+        goalEmoji: string;
         amount: number;
     }[];
 
