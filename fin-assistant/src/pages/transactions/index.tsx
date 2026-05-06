@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useTransactions } from "../../features/income/get/hooks/useTransactions";
+import { DateSelector } from "../../shared/ui/DateSelector/DateSelector";
 import { TransactionGroup } from "../../widgets/Transaction/TransactionGroup/TransactionGroup";
 import styles from "./TransactionsPage.module.css";
-import { DateSelector } from "../../shared/ui/DateSelector/DateSelector";
 
 export const TransactionsPage = () => {
     const { transactions, loading } = useTransactions();
